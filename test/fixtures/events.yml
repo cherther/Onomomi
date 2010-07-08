@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  event_date: 2010-07-07
+  user_id: 1
+  title: MyString
+  description: MyString
+  event_type_id: 1
+  event_series_id: 1
+  distance_category_id: 1
+
+two:
+  event_date: 2010-07-07
+  user_id: 1
+  title: MyString
+  description: MyString
+  event_type_id: 1
+  event_series_id: 1
+  distance_category_id: 1

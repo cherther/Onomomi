@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Onomomi</title>
+  <%= stylesheet_link_tag :all %>
+	<script src="/javascripts/jquery-1.4.2.min.js" type="text/javascript"></script>
+	<script src="/javascripts/application.js" type="text/javascript"></script>
+	<style type="text/css">
+	  html { height: 100% }
+	  /*body { height: 100%; margin: 0px; padding: 0px }*/
+	 
+	</style>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+  <%#= csrf_meta_tag %>
+	<%= yield(:head) %>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="header">
+			<div>	
+				<h1>Onomomi</h1>
+			</div>
+			<a href="/events" class="button">Events</a>
+			<a href="/events/new" class="button">Post New Event</a>
+
+			<a href="/account/logout" class="button">Log out</a>
+		</div>
+		<div id="content" class="cw-blue-border">
+			<%= yield -%>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	$(function() {
+		//$('.button').button();
+	});
+</script>
+</html>
+

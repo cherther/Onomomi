@@ -1,0 +1,6 @@
+<ul>
+<% for event in @events %>
+	<li>
+		<a href="/events/show/<%= event.id %>"><%= event.title %></a></li>
+	<% end %>
+</ul>

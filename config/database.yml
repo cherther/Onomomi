@@ -1,0 +1,20 @@
+# SQLite version 3.x
+#   gem install sqlite3-ruby (not necessary on OS X Leopard)
+development: &defaults
+  adapter: mysql
+  encoding: utf8
+  database: onomomi_dev
+  username: root
+  password:
+  socket: /tmp/mysql.sock
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test: &test
+  <<: *defaults
+  database: onomomi_test
+  
+production:
+  <<: *defaults
+  database: onomomi_prod

@@ -1,0 +1,97 @@
+/* cw-main.css  Claus Herther	codewerks.de*/
+/* reset*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, 
+acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, 
+sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td
+{ border: 0; outline: 0;	vertical-align: baseline; background: transparent;}
+html { overflow-y: scroll; } 
+/* Start */
+body  
+{ 
+    font-size: 81.25%; 
+    line-height: 1.2; 
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Helvetica, Arial, sans-serif;
+}
+#wrapper
+{
+	margin: 10px;
+}
+#header
+{
+
+}
+#content
+{
+}
+.cw-blue-border
+{
+	padding: 15px;
+	margin: 15px 0px;
+	border-radius: 15px; 
+	-moz-border-radius: 15px; 
+	-webkit-border-radius: 15px; 
+	
+	border: 1px solid #A6C9E2;
+}
+#map_canvas
+{
+	min-height: 600px;
+	height: 100%;
+	border-radius: 15px; 
+	-moz-border-radius: 15px; 
+	-webkit-border-radius: 15px; 
+}
+
+.center
+{
+	text-align: center;
+}
+h1, h2, h3
+{
+	padding: 3px 0px;
+}
+h1 { font-size: 2em; font-variant:small-caps;}
+h2 { font-size: 1.375em; }
+h3 { font-size: 1.125em; }
+hr { color: #ccc; background-color: #ccc; }
+a, a:visited { /*text-decoration: none;*/ color: #0044CC; }
+fieldset legend
+{
+	font-weight: bold;	
+}
+input{
+	padding: 3px 0px;
+	margin: 5px 0px;
+}
+label {
+	padding: 3px 0px;	
+	margin: 5px 0px;
+}
+table
+{
+	padding: 3px 0px;	
+	margin: 5px 0px;
+	border-collapse: collapse;
+	border-radius: 5px; 
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+	
+}
+#tbl-workouts
+{
+	width: 90%;
+}
+}
+tr
+{
+	
+}
+th
+{
+	text-align: left;
+}
+th, td
+{
+	padding: 5px;
+	border-bottom: 1px solid #c0c0c0;
+}
