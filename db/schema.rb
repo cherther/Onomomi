@@ -9,12 +9,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100708113218) do
+ActiveRecord::Schema.define(:version => 20100710180300) do
 
   create_table "distance_categories", :force => true do |t|
-    t.string   "name",       :null => false
+    t.string   "name",                         :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "event_type_id", :default => 0, :null => false
   end
 
   create_table "event_series", :force => true do |t|
@@ -48,6 +49,17 @@ ActiveRecord::Schema.define(:version => 20100708113218) do
     t.float    "end_lat"
     t.float    "end_lng"
     t.text     "route"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "user_name",    :null => false
+    t.string   "identifier",   :null => false
+    t.string   "email"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "organization"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

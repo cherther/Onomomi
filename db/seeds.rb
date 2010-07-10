@@ -6,7 +6,18 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
 
-DistanceCategory.create([{ :name => 'Marathon'},{ :name => 'Half-Marathon' }, { :name => '10K' }, { :name => '5K' }, { :name => 'Ironman' }, { :name => 'Half-Ironman' }, { :name => 'Olympic' }])
+DistanceCategory.create([
+  { :name => 'Marathon', :event_type_id => 1 },
+  { :name => 'Half-Marathon', :event_type_id => 1  }, 
+  { :name => '10K', :event_type_id => 1  }, 
+  { :name => '5K', :event_type_id => 1  }, 
+  { :name => 'Criterion', :event_type_id => 2  }, 
+  { :name => 'Century Ride', :event_type_id => 2  }, 
+  { :name => 'Ironman', :event_type_id => 3  }, 
+  { :name => '70.3', :event_type_id => 3  }, 
+  { :name => 'Olympic', :event_type_id => 3  },
+  { :name => 'Other', :event_type_id => 0  }, 
+  ])
 EventType.create([{:name => 'Running'},{:name => 'Cycling'},{:name => 'Triathlon'}])
 
 @running = EventType.find(:first, :conditions => "name = 'Running'")

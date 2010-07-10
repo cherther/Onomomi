@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_name: MyString
+  identifier: MyString
+  first_name: MyString
+  last_name: MyString
+  organization: MyString
+
+two:
+  user_name: MyString
+  identifier: MyString
+  first_name: MyString
+  last_name: MyString
+  organization: MyString

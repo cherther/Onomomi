@@ -1,6 +1,16 @@
-
 var _geocoder;
 var _map;
+
+function getQueryString() {
+    var assoc = new Array();
+    var queryString = unescape(location.search.substring(1));
+    var keyValues = queryString.split('&');
+    for (var i in keyValues) {
+        var key = keyValues[i].split('=');
+        assoc[key[0]] = key[1];
+    }
+    return assoc;
+}
 
 function initializeMap(events, startAtCurrentLocation){
 
@@ -22,7 +32,7 @@ function initializeMap(events, startAtCurrentLocation){
 function setUpMap(initialLocation, events){
 	console.log(initialLocation);
 	var mapOptions = {
-	  zoom: 10,
+	  zoom: 2,
 	  center: initialLocation,
 	  mapTypeId: google.maps.MapTypeId.ROADMAP
 		};

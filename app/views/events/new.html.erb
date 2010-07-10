@@ -1,0 +1,62 @@
+<h2>Post New Event</h2>
+<% form_for(@event, :url => { :action => 'create', :method => "post" } ) do |f| %>
+<%= f.error_messages %>
+<div>
+	<%= image_tag(session['photo_url'], :height => '80')%>
+</div>
+<div>
+	<%= self.current_user.user_name %> (<%= self.current_user.email %>)
+</div>
+	<input type="hidden" id="event_user_id" name="event[user_id]" value="<%=self.current_user.id %>" />
+
+<div>&nbsp;</div>
+<div><label>Event Name</label></div>
+<div><%= f.text_field :title, :size => '80' %></div>
+
+<div>&nbsp;</div>
+<div><label>When?</label></div>
+<div><%= f.text_field :event_date %></div>
+
+<div>&nbsp;</div>
+<div><label>Start Address</label></div>
+<div><%= f.text_field :start_address, :size => '80' %></div>
+
+<div>
+	<label>Event Type</label>
+</div>
+<div id="event_type">
+	<% for evt in @event_types %>
+	<input type="radio" id="event_event_type_id<%= evt.id%>" name="event[event_type_id]" value="<%= evt.id%>"/>
+	<label for="event_event_type_id<%= evt.id%>"><%= evt.name%></label>
+	<% end %>
+	
+</div>
+<div>&nbsp;</div>
+<div>
+	<label>Distance?</label>
+</div>
+<div id="distance_category">
+	<% for dst in @distances %>
+	<input type="radio" id="event_distance_category_id_<%= dst.id%>" name="event[distance_category_id]" value="<%= dst.id%>"  rel="<%= dst.event_type_id%>"/>
+	<label for="event_distance_category_id_<%= dst.id%>"><%= dst.name%></label>
+	<% end %>
+</div>
+
+<div>&nbsp;</div>
+<div><label>Description</label></div>
+<div><%= f.text_area :description, :size => '70x8' %></div>
+<div>
+	&nbsp;
+</div>
+<div>
+	<%= f.submit "Save" %>
+</div>
+<% end %>
+<script type="text/javascript">
+	$(function() {
+		$('#event_type').buttonset();
+		$('#distance_category').buttonset();
+		$('#event_event_date').datepicker();
+				
+	});
+</script>
