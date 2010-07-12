@@ -9,7 +9,7 @@ $(document).ready(function(){
 	});
 	
 	$('#cw-map-option-location-select-text').click(function() {
-		console.log('text changed: ' + $('#cw-map-option-location-select-text').val());
+		//console.log('text changed: ' + $('#cw-map-option-location-select-text').val());
 		$('#cw-map-option-location-select').attr('checked', true);
 	});
 
