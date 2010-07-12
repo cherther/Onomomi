@@ -1,5 +1,9 @@
 var _geocoder;
 var _map;
+var _zoomLocal = 6;
+var _zoomGlobal = 2;
+
+var _mapViewOptionsDefault = { useSensor: false, initialLocation: 'Santa Monica, CA 90405, USA', zoomLevel: _zoomGlobal };
 
 function getQueryString() {
     var assoc = new Array();
@@ -11,28 +15,51 @@ function getQueryString() {
     }
     return assoc;
 }
+function mapEvents(options){
+	
+	var id = getQueryString()['id'];
+	id = id != null ? '/' + id : '';
+	var url = '/events/index' + id + '.json';
+	$.getJSON(url, null, 
+		function(data) { 
+			initializeMap(data, options); 
+			});
+}
 
-function initializeMap(events, startAtCurrentLocation){
+function initializeMap(events, options){
 
 	_geocoder = new google.maps.Geocoder();
-	
-	if(startAtCurrentLocation && navigator.geolocation) {
+	console.log(options);
+	if (options.zoomLevel == null){
+		options.zoomLevel = _zoomGlobal;
+	}
+	if(options.useSensor && navigator.geolocation) {
 	    navigator.geolocation.getCurrentPosition(
 				function(position) {
+					//console.log(position);
 	      	var initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-					setUpMap(initialLocation, events);
+					//console.log('My initialLocation: ' + initialLocation);
+					setUpMap(initialLocation, events, _zoomLocal);
 				});
 	} else {
-		var initialLocation = new google.maps.LatLng(34.0194543, -118.4911912);
-		setUpMap(initialLocation, events);
+		if (_geocoder) {
+			//console.log(options);
+			_geocoder.geocode({ 'address': options.initialLocation }, 
+				function(results, status){ 
+					var latlng = results[0].geometry.location;
+					
+					setUpMap(latlng, events, options.zoomLevel);
+				});
+
+		}
 	}			
 
 }
 
-function setUpMap(initialLocation, events){
+function setUpMap(initialLocation, events, zoomLevel){
 	console.log(initialLocation);
 	var mapOptions = {
-	  zoom: 2,
+	  zoom: zoomLevel,
 	  center: initialLocation,
 	  mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
@@ -48,7 +75,7 @@ function markCoords(events){
 	for(var i in events){
 
 		var event = events[i].event;
-		console.log('map() event ' + i + ':'+ event.title + ' - ' + event.start_address);
+		//console.log('map() event ' + i + ':'+ event.title + ' - ' + event.start_address);
 		
 	  getCoords(event, 
 			function (results, status, name) {
@@ -69,7 +96,7 @@ function markCoords(events){
 
 function getCoords(event, callback){
 
-	console.log('getCoords() address: ' + event.start_address);
+	//console.log('getCoords() address: ' + event.start_address);
 
 	if (_geocoder) {
 

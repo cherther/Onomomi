@@ -1,1 +1,19 @@
+<div id="map-options">
+	<form id="map-options-form" method="post">
+	<span>
+		<input type="radio" id="cw-map-option-location-world" value="world" class="cw-map-option-location" name="cw-map-option-location" checked="checked" />
+		<label for="cw-map-option-location-world">World-wide</label>
+	</span>
+	<span>
+		<input type="radio" id="cw-map-option-location-select" value="select" class="cw-map-option-location" name="cw-map-option-location"/>
+		<label for="cw-map-option-location-select">Near:</label>
+		<input for="cw-map-option-location-select" type="text" id="cw-map-option-location-select-text" class="cw-map-option-location" name="cw-map-option-location-select" size="80"/>
+	</span>
+	<span>
+		<input type="radio" id="cw-map-option-location-local" value="local" class="cw-map-option-location" name="cw-map-option-location"/>
+		<label for="cw-map-option-location-local">Near Me (Slow)</label>
+	</span>
+	<input id="mapFilterSubmit" type="submit" value="Go">
+	</form>
+</div>
 <%= render :partial => "shared/event_map" %>

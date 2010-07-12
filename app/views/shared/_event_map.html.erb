@@ -1,12 +1,9 @@
 <div id="map_canvas"></div>
 <script type="text/javascript">
 	$(document).ready(function(){
-		var id = getQueryString()['id'];
-		id = id != null ? '/' + id : '';
-		var url = '/events/index' + id + '.json';
-		$.getJSON(url, null, 
-			function(data) { 
-				initializeMap(data, false); 
-				});
+		
+		mapEvents(_mapViewOptionsDefault);
+		
+		
 	});
 </script>
