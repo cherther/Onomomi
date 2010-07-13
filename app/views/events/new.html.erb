@@ -11,20 +11,20 @@
 
 <div>&nbsp;</div>
 <div><label>Event Name</label></div>
-<div><%= f.text_field :title, :size => '80' %></div>
+<div><%= f.text_field :title, :size => '80', :title => 'Enter the official name for the event' %></div>
 
 <div>&nbsp;</div>
-<div><label>When?</label></div>
-<div><%= f.text_field :event_date %></div>
+<div><label>Event Race Date</label></div>
+<div><%= f.text_field :event_date%></div>
 
 <div>&nbsp;</div>
 <div><label>Start Address</label></div>
-<div><%= f.text_field :start_address, :size => '80' %></div>
+<div><%= f.text_field :start_address, :size => '80', :title => 'Enter the address for the event Start' %></div>
 
 <div>
 	<label>Event Type</label>
 </div>
-<div id="event_type">
+<div id="event_type" title = "Select the type of event">
 	<% for evt in @event_types %>
 	<input type="radio" id="event_event_type_id<%= evt.id%>" name="event[event_type_id]" value="<%= evt.id%>"/>
 	<label for="event_event_type_id<%= evt.id%>"><%= evt.name%></label>
@@ -35,7 +35,7 @@
 <div>
 	<label>Distance?</label>
 </div>
-<div id="distance_category">
+<div id="distance_category" title = "Select a distance category for this event">
 	<% for dst in @distances %>
 	<input type="radio" id="event_distance_category_id_<%= dst.id%>" name="event[distance_category_id]" value="<%= dst.id%>"  rel="<%= dst.event_type_id%>"/>
 	<label for="event_distance_category_id_<%= dst.id%>"><%= dst.name%></label>
@@ -44,7 +44,7 @@
 
 <div>&nbsp;</div>
 <div><label>Description</label></div>
-<div><%= f.text_area :description, :size => '70x8' %></div>
+<div><%= f.text_area :description, :size => '70x8', :title => 'Enter a description for this event' %></div>
 <div>
 	&nbsp;
 </div>

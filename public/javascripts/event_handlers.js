@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+	$('[title]').tooltip({ effect: 'fade', opacity: 0.7, predelay: 800 });
+	
 	$('#map-options-form').submit(function(evt) {
 		evt.preventDefault();
 		mapOptionsFormSubmit();

@@ -1,3 +1,13 @@
+function formatDate(date, format)
+{
+		date = Date.parse(date);
+		console.log(date);
+    if (!format)
+      format="M/dd/yyyy";               
+  
+    return date.toString(format);
+}
+
 var _geocoder;
 var _map;
 var _zoomLocal = 6;
@@ -92,7 +102,7 @@ function markCoords(events){
 						var marker = new google.maps.Marker({
 						      position: latlng, 
 						      map: _map, 
-						      title: event.title
+						      title: event.title + ' - ' + formatDate(event.event_date, 'dddd, M/dd/yyyy')
 						  });
 		//			} else {
 		//			  console.log("Geocoding failed: " + status);
@@ -117,3 +127,5 @@ function getCoords(event, callback){
 		console.log('no geocoder');
   }
 }
+
+

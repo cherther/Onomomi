@@ -3,8 +3,10 @@
 <head>
   <title>Onomomi</title>
   <%= stylesheet_link_tag :all %>
-	<%= javascript_include_tag 'jquery-1.4.2.min.js' %>
+	<script src="http://cdn.jquerytools.org/1.2.3/jquery.tools.min.js"></script>
+	<%#= javascript_include_tag 'jquery-1.4.2.min.js' %>
 	<%= javascript_include_tag 'jquery-ui' %>
+	<%= javascript_include_tag 'date' %>
 	<%= javascript_include_tag 'event_handlers' %>
 	<%= javascript_include_tag 'application' %>
 	<style type="text/css">
@@ -23,16 +25,16 @@
 				<h1 style="display:inline">Onomomi</h1>
 				<h4 style="display:inline">One More Mile: Endurance events around the world</h4>
 			<span "display:inline">
-				<a href="/" class="button">Events</a>
+				<a href="/" class="button" title="Show events around the world or near you">Events</a>
 				<% if (self.current_user == nil)%>
 							<a class="rpxnow button" onclick="return false;"
-							href="https://onomomi.rpxnow.com/openid/v2/signin?token_url=<%= h token_url %>&return_url=/events/new"> Post </a>
+							href="https://onomomi.rpxnow.com/openid/v2/signin?token_url=<%= h token_url %>&return_url=/events/new" title="Post a new event">Post</a>
 				<% else %>
-				<a href="/events/new" class="button">Post New Event</a>
+				<a href="/events/new" class="button" title="Post a new event">Post</a>
 				<% end %>
 				<% if (self.current_user == nil)%>
 				<a class="rpxnow button" onclick="return false;"
-				href="https://onomomi.rpxnow.com/openid/v2/signin?token_url=<%= h token_url %>"> Sign In </a>
+				href="https://onomomi.rpxnow.com/openid/v2/signin?token_url=<%= h token_url %>" title="Please sign in"> Sign In </a>
 				<% else %>
 				<!--Hello <%= self.current_user.friendly %>!-->
 				<%= link_to 'Log Out', { :controller	=> 'account', :action => 'logout' }, :class => 'button' %>
@@ -45,6 +47,7 @@
 			<%= yield -%>
 		</div>
 	</div>
+	<div id="footer">&copy; <%= Date.today.year %> ONOMOMI - developed by <a href="http://www.codewerks.de" title="They're awesome!">codewerks.de</a></div>
 	<script type="text/javascript">
 	  var rpxJsHost = (("https:" == document.location.protocol) ? "https://" : "http://static.");
 	  document.write(unescape("%3Cscript src='" + rpxJsHost +
