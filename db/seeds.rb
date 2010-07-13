@@ -22,7 +22,7 @@ EventType.create([{:name => 'Running'},{:name => 'Cycling'},{:name => 'Triathlon
 
 @running = EventType.find(:first, :conditions => "name = 'Running'")
 @marathon = DistanceCategory.find(:first, :conditions => "name = 'Marathon'")
-@tenK = DistanceCategory.find(:first, :conditions => "name = '10K'")
+@half = DistanceCategory.find(:first, :conditions => "name = 'Half-Marathon'")
 
 Event.create([
   { 
@@ -51,13 +51,13 @@ Event.create([
     :event_date => '2011-01-01', 
     :user_id => 1, 
     :event_type_id => @running.id, 
-    :distance_category_id => 2, 
+    :distance_category_id => @half.id, 
     :title => 'Munich Stadtlauf Half-Marathon', 
     :description => 'Munich Stadtlauf Half-Marathon',
     :start_address => 'Marienplatz, Munich, Germany ',
     :start_lat => 48.1378,
     :start_lng => 11.5759
-    }
+    },
     { 
     :event_date => '2011-03-20', 
     :user_id => 1, 
