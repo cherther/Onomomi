@@ -3,7 +3,7 @@ var _map;
 var _zoomLocal = 6;
 var _zoomGlobal = 2;
 
-var _mapViewOptionsDefault = { useSensor: false, initialLocation: 'Santa Monica, CA 90405, USA', zoomLevel: _zoomGlobal };
+var _mapViewOptionsDefault = { useSensor: false, initialLocation: { address: '', lat: 34.019454, lng: -118.491191 } , zoomLevel: _zoomGlobal };
 
 function getQueryString() {
     var assoc = new Array();
@@ -37,21 +37,28 @@ function initializeMap(events, options){
 	    navigator.geolocation.getCurrentPosition(
 				function(position) {
 					//console.log(position);
-	      	var initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+	      	var latlng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
 					//console.log('My initialLocation: ' + initialLocation);
 					setUpMap(initialLocation, events, _zoomLocal);
 				});
 	} else {
-		if (_geocoder) {
+		console.log('address:' + options.initialLocation.address);
+		if (options.initialLocation.address.length>0 && _geocoder) {
 			//console.log(options);
-			_geocoder.geocode({ 'address': options.initialLocation }, 
+			_geocoder.geocode({ 'address': options.initialLocation.address }, 
 				function(results, status){ 
-					var latlng = results[0].geometry.location;
-					
-					setUpMap(latlng, events, options.zoomLevel);
+					if (results != null && results.length > 0){
+						var latlng = results[0].geometry.location;
+						setUpMap(latlng, events, options.zoomLevel);
+					}
 				});
+			} else {
+				var latlng = new google.maps.LatLng(options.initialLocation.lat,options.initialLocation.lat);
+				setUpMap(latlng, events, options.zoomLevel);
+				
+			}
 
-		}
+		//}
 	}			
 
 }
@@ -77,20 +84,20 @@ function markCoords(events){
 		var event = events[i].event;
 		//console.log('map() event ' + i + ':'+ event.title + ' - ' + event.start_address);
 		
-	  getCoords(event, 
-			function (results, status, name) {
-	    	if (status == google.maps.GeocoderStatus.OK) {
-						var latlng = results[0].geometry.location;
+	  //getCoords(event, 
+		//	function (results, status, name) {
+	   // 	if (status == google.maps.GeocoderStatus.OK) {
+						var latlng = new google.maps.LatLng(event.start_lat,event.start_lng);//results[0].geometry.location;
 
 						var marker = new google.maps.Marker({
 						      position: latlng, 
 						      map: _map, 
-						      title: name
+						      title: event.title
 						  });
-					} else {
-					  console.log("Geocoding failed: " + status);
-					}
-  		});
+		//			} else {
+		//			  console.log("Geocoding failed: " + status);
+		//			}
+  	//	});
 	}
 }
 

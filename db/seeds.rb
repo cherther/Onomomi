@@ -33,8 +33,8 @@ Event.create([
   :title => 'Malibu Marathon', 
   :description => 'Annual Malibu Marathon',
   :start_address => 'Malibu, CA, USA',
-  :start_lat => 0,
-  :start_lng => 0
+  :start_lat => 34.005,
+  :start_lng => -118.81
   },
   { 
   :event_date => '2011-03-20', 
@@ -44,17 +44,29 @@ Event.create([
   :title => 'LA Marathon', 
   :description => 'Honda LA Marathon presented by K-SWISS',
   :start_address => 'Dodger Stadium, Los Angeles, CA, United States',
-  :start_lat => 48.15561,
-  :start_lng => 11.5078
+  :start_lat => 34.0754,
+  :start_lng => -118.491
     },
     { 
     :event_date => '2011-01-01', 
     :user_id => 1, 
     :event_type_id => @running.id, 
-    :distance_category_id => @tenK.id, 
-    :title => 'Santa Monica 10K', 
-    :description => 'Santa Monica 10K',
-    :start_address => 'Santa Monica, CA, United States',
-    :start_lat => 48.15561,
-    :start_lng => 11.5078
-    }])
+    :distance_category_id => 2, 
+    :title => 'Munich Stadtlauf Half-Marathon', 
+    :description => 'Munich Stadtlauf Half-Marathon',
+    :start_address => 'Marienplatz, Munich, Germany ',
+    :start_lat => 48.1378,
+    :start_lng => 11.5759
+    }
+    { 
+    :event_date => '2011-03-20', 
+    :user_id => 1, 
+    :event_type_id => @running.id, 
+    :distance_category_id => @marathon.id, 
+    :title => 'Honolulu Marathon ', 
+    :description => 'Honolulu Marathon  ',
+    :start_address => 'Honolulu, HI, USA',
+    :start_lat => 21.3069,
+    :start_lng => -157.858
+      }
+        ])

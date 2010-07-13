@@ -21,12 +21,12 @@
 		<div id="header">
 			<div class="cw-blue-border">
 				<h1 style="display:inline">Onomomi</h1>
-				<h3 style="display:inline">One More Mile: Endurance events around the world</h3>
+				<h4 style="display:inline">One More Mile: Endurance events around the world</h4>
 			<span "display:inline">
 				<a href="/" class="button">Events</a>
 				<% if (self.current_user == nil)%>
 							<a class="rpxnow button" onclick="return false;"
-							href="https://onomomi.rpxnow.com/openid/v2/signin?token_url=<%= h token_url %>&return_url=/events/new"> Post New Event </a>
+							href="https://onomomi.rpxnow.com/openid/v2/signin?token_url=<%= h token_url %>&return_url=/events/new"> Post </a>
 				<% else %>
 				<a href="/events/new" class="button">Post New Event</a>
 				<% end %>

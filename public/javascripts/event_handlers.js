@@ -16,7 +16,7 @@ $(document).ready(function(){
 	function mapOptionsFormSubmit(){
 		//console.log($('.cw-map-option-location:checked').val());
 		var location = $('.cw-map-option-location:checked').val();
-		//console.log('useSensor: ' + (location == 'local'));
+		console.log('useSensor: ' + (location == 'local'));
 		var mapOptions = _mapViewOptionsDefault;
 
 		switch(location){
@@ -26,17 +26,17 @@ $(document).ready(function(){
 				break;
 			case 'select':
 				mapOptions.useSensor = false;
-				mapOptions.initialLocation = $('#cw-map-option-location-select-text').val();
+				mapOptions.initialLocation.address = $('#cw-map-option-location-select-text').val();
 				//console.log(mapOptions.initialLocation);
 				mapOptions.zoomLevel = _zoomLocal;
 				break;
 			default:
 			mapOptions.useSensor = false;
-			mapOptions.initialLocation = 'Los Angeles, CA, USA';
+			//mapOptions.initialLocation = 'Los Angeles, CA, USA';
 			mapOptions.zoomLevel = _zoomGlobal;
 
 		}
-		if (mapOptions.initialLocation.length > 0){
+		if (mapOptions.useSensor || mapOptions.initialLocation.address.length > 0){
 			mapEvents(mapOptions);
 		}
 	}
