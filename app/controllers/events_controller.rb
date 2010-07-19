@@ -7,7 +7,7 @@ class EventsController < ApplicationController
     @event = Event.new(params[:event])
   
     if @event.save
-      redirect_to '/events' #/show/#{@event.id}"
+      redirect_to '/' #/show/#{@event.id}"
     end
   end
   

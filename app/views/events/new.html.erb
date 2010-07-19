@@ -1,6 +1,7 @@
 <h2>Post New Event</h2>
 <% form_for(@event, :url => { :action => 'create', :method => "post" } ) do |f| %>
 <%= f.error_messages %>
+<div>Event Contact:</div>
 <div>
 	<%= image_tag(session['photo_url'], :height => '80')%>
 </div>
@@ -19,8 +20,11 @@
 
 <div>&nbsp;</div>
 <div><label>Start Address</label></div>
-<div><%= f.text_field :start_address, :size => '80', :title => 'Enter the address for the event Start' %></div>
-
+<div>
+<%= f.text_field :start_address, :size => '80', :title => 'Enter the address for the event Start' %></div>
+<div id="event_address_canvas"></div>
+<%= f.hidden_field :start_lat %>
+<%= f.hidden_field :start_lng %>
 <div>
 	<label>Event Type</label>
 </div>
